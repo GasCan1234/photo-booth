@@ -18,6 +18,7 @@ from shutil import copy2
 import sys
 import datetime
 import os
+import subprocess
 
 #Need to do this early, in case import below fails:
 REAL_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -252,7 +253,7 @@ def taking_photo(photo_number, filename_prefix):
     print('Photo (' + str(photo_number) + ') saved: ' + filename)
     return filename
 
-def playback_screen(filename_prefix):
+def playback_screen(filename_prefix, photo_filenames):
     """
     Final screen before main loop restarts
     """
@@ -261,6 +262,8 @@ def playback_screen(filename_prefix):
     print('Processing...')
     processing_image = REAL_PATH + '/assets/processing.png'
     overlay_image(processing_image, 2)
+
+    create_thumbnails(photo_filenames)
 
     #Playback
     prev_overlay = False
@@ -279,6 +282,13 @@ def playback_screen(filename_prefix):
     print('All done!')
     finished_image = REAL_PATH + '/assets/all_done_delayed_upload.png'
     overlay_image(finished_image, 5)
+
+def create_thumbnails(photo_filenames):
+    print('Now make a collage and print out')
+    external_script = REAL_PATH + "/create_Print.sh " + ' '.join(photo_filenames)
+    print(external_script)
+    subprocess.Popen(external_script, shell=True)
+
 
 def main():
     """
@@ -328,6 +338,7 @@ def main():
                 exit_button_is_pressed = True
 
         if exit_button_is_pressed is not None:
+            subprocess.Popen("sudo shutdown -h now", shell=True)
             return #Exit the photo booth
 
         if TESTMODE_AUTOPRESS_BUTTON:
@@ -367,7 +378,7 @@ def main():
             photo_filenames.append(fname)
 
         #thanks for playing
-        playback_screen(filename_prefix)
+        playback_screen(filename_prefix, photo_filenames)
 
         #Save photos into additional folders (for post-processing/backup... etc.)
         for dest in COPY_IMAGES_TO:
