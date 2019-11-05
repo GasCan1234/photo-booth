@@ -28,6 +28,9 @@
 # Primary folder to save images to (required):
 "SAVE_RAW_IMAGES_FOLDER" : "photos"
 
+# Use assets Template - stored in assets/$NAME (required):
+"ASSETS_TEMPLATE_FOLDER" : "base"
+
 # Additional locations where images will be saved to (optional):
 # "COPY_IMAGES_TO" : ["photos-IN"]
 

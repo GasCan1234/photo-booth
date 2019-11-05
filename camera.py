@@ -80,6 +80,7 @@ try:
     DEBOUNCE_TIME = CONFIG['DEBOUNCE_TIME']
     TESTMODE_AUTOPRESS_BUTTON = CONFIG['TESTMODE_AUTOPRESS_BUTTON']
     SAVE_RAW_IMAGES_FOLDER = CONFIG['SAVE_RAW_IMAGES_FOLDER']
+    ASSETS_TEMPLATE_FOLDER = CONFIG['ASSETS_TEMPLATE_FOLDER']
 
 except KeyError as exc:
     print('')
@@ -231,7 +232,7 @@ def prep_for_photo_screen(photo_number):
     """
 
     #Get ready for the next photo
-    get_ready_image = REAL_PATH + '/assets/get_ready_' + str(photo_number) + '.png'
+    get_ready_image = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + 'get_ready_' + str(photo_number) + '.png'
     overlay_image(get_ready_image, PREP_DELAY, 3, 'RGBA')
 
 def taking_photo(photo_number, filename_prefix):
@@ -260,7 +261,7 @@ def playback_screen(filename_prefix, photo_filenames):
 
     #Processing
     print('Processing...')
-    processing_image = REAL_PATH + '/assets/processing.png'
+    processing_image = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + 'processing.png'
     overlay_image(processing_image, 2)
 
     create_thumbnails(photo_filenames)
@@ -280,7 +281,7 @@ def playback_screen(filename_prefix, photo_filenames):
 
     #All done
     print('All done!')
-    finished_image = REAL_PATH + '/assets/all_done_delayed_upload.png'
+    finished_image = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + 'all_done_delayed_upload.png'
     overlay_image(finished_image, 5)
 
 def create_thumbnails(photo_filenames):
@@ -310,8 +311,8 @@ def main():
     CAMERA.start_preview(resolution=(SCREEN_W, SCREEN_H))
 
     #Display intro screen
-    intro_image_1 = REAL_PATH + '/assets/intro_1.png'
-    intro_image_2 = REAL_PATH + '/assets/intro_2.png'
+    intro_image_1 = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + 'intro_1.png'
+    intro_image_2 = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + 'intro_2.png'
     overlay_1 = overlay_image(intro_image_1, 0, 3)
     overlay_2 = overlay_image(intro_image_2, 0, 4)
 

@@ -25,7 +25,10 @@ photos/*.jpg
 photos-IN/
 photos-PROCESSING/
 photos-DONE/
-assets_Templates/*
+assets/*
+!assets/base
 print_Templates/*
 photos_local
 photos_extern
+
+.pydevproject
