@@ -81,6 +81,7 @@ try:
     TESTMODE_AUTOPRESS_BUTTON = CONFIG['TESTMODE_AUTOPRESS_BUTTON']
     SAVE_RAW_IMAGES_FOLDER = CONFIG['SAVE_RAW_IMAGES_FOLDER']
     ASSETS_TEMPLATE_FOLDER = CONFIG['ASSETS_TEMPLATE_FOLDER']
+    CREATE_COLLAGE = CONFIG['CREATE_COLLAGE']
 
 except KeyError as exc:
     print('')
@@ -263,8 +264,9 @@ def playback_screen(filename_prefix, photo_filenames):
     print('Processing...')
     processing_image = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + '/processing.png'
     overlay_image(processing_image, 2)
-
-    create_thumbnails(photo_filenames)
+    
+    if CREATE_COLLAGE == "true":
+        create_collage(photo_filenames)
 
     #Playback
     prev_overlay = False
@@ -284,9 +286,9 @@ def playback_screen(filename_prefix, photo_filenames):
     finished_image = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + '/all_done_delayed_upload.png'
     overlay_image(finished_image, 5)
 
-def create_thumbnails(photo_filenames):
-    print('Now make a collage and print out')
-    external_script = REAL_PATH + "/create_Print.sh " + ' '.join(photo_filenames)
+def create_collage(photo_filenames):
+    print('Now make a collage and run external script')
+    external_script = REAL_PATH + "/createCollage.sh " + ' '.join(photo_filenames)
     print(external_script)
     subprocess.Popen(external_script, shell=True)
 
