@@ -10,16 +10,16 @@
 "DEBOUNCE_TIME"     : 0.05 # Min duration (seconds) button is required to be "pressed in" for.
 
 # Take photos at this resolution:
-"PHOTO_W"           : 1920
-"PHOTO_H"           : 1152
+"PHOTO_W"           : 3280
+"PHOTO_H"           : 2464
 #Note:
 # - The max resolution for PiCamera v2, is: 3280x2464 , assuming you are running the latest firmware.
 # - To upgrade your firmware, please run:
 #   sudo apt-get dist-upgrade
 
 # Resolution of the photo booth display:
-"SCREEN_W"          : 800
-"SCREEN_H"          : 480
+"SCREEN_W"          : 1024
+"SCREEN_H"          : 720
 
 # Camera setup
 "CAMERA_ROTATION"   : 270 # Rotation of the camera
@@ -30,6 +30,9 @@
 
 # Use assets Template - stored in assets/$NAME (required):
 "ASSETS_TEMPLATE_FOLDER" : "base"
+
+# Create Collage after shot all pics (required):
+"CREATE_COLLAGE" : "true"
 
 # Additional locations where images will be saved to (optional):
 # "COPY_IMAGES_TO" : ["photos-IN"]
