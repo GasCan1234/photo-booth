@@ -9,8 +9,9 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo "### UPDATE START ###"
+	git add .
     git reset --hard HEAD
-	git pull
+    git pull origin master
 	echo "### UPDATE DONE ###"
 fi
 
