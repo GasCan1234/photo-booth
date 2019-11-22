@@ -28,6 +28,7 @@ photos-DONE/
 assets/*
 !assets/base
 print_Templates/*
+!print_Templates/base
 photos_local
 photos_extern
 
