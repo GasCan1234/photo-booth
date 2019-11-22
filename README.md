@@ -1,7 +1,7 @@
 # Raspberry Pi Photo Booth
 The code for my Raspberry Pi Photo Booth (Version 2)
 
-<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/jibbius/raspberry_pi_photo_booth/blob/master/promo_image.jpg?raw=true" /></p>
+<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/GasCan1234/photo-booth/blob/master/docs/promo_image.jpg?raw=true" /></p>
 
 # Instructions
 1. Build a photo booth (see below)
@@ -23,9 +23,9 @@ The code for my Raspberry Pi Photo Booth (Version 2)
 
 7. Activate picamera in raspi-config:
 `sudo raspi-config`
-<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/ieguiguren/raspberry_pi_photo_booth/blob/master/raspiconfig1.png?raw=true" /></p>
-<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/ieguiguren/raspberry_pi_photo_booth/blob/master/raspiconfig2.png?raw=true" /></p>
-<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/ieguiguren/raspberry_pi_photo_booth/blob/master/raspiconfig3.png?raw=true" /></p>
+<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/GasCan1234/photo-booth/blob/master/docs/raspiconfig1.png?raw=true" /></p>
+<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/GasCan1234/photo-booth/blob/master/docs/raspiconfig2.png?raw=true" /></p>
+<p align="center"><img alt="Raspberry Pi Photo Booth" src="https://github.com/GasCan1234/photo-booth/blob/master/docs/raspiconfig3.png?raw=true" /></p>
 
 You must have camera connected to avoid the error:
 `mmal: mmal_vc_component_create: failed to create component 'vc.ril.camera' (1:ENOMEM)
