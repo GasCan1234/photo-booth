@@ -31,8 +31,11 @@
 # Use assets Template - stored in assets/$NAME (required):
 "ASSETS_TEMPLATE_FOLDER" : "base"
 
-# Create Collage after shot all pics (required):
-"CREATE_COLLAGE" : "true"
+# Create Collage after shot all pics (optional):
+# "CREATE_COLLAGE" : "true"
+
+# Use print Template - stored in print_Templates/$NAME (optional):
+# "PRINT_TEMPLATE_FOLDER" : "base"
 
 # Additional locations where images will be saved to (optional):
 # "COPY_IMAGES_TO" : ["photos-IN"]

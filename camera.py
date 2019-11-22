@@ -81,7 +81,6 @@ try:
     TESTMODE_AUTOPRESS_BUTTON = CONFIG['TESTMODE_AUTOPRESS_BUTTON']
     SAVE_RAW_IMAGES_FOLDER = CONFIG['SAVE_RAW_IMAGES_FOLDER']
     ASSETS_TEMPLATE_FOLDER = CONFIG['ASSETS_TEMPLATE_FOLDER']
-    CREATE_COLLAGE = CONFIG['CREATE_COLLAGE']
 
 except KeyError as exc:
     print('')
@@ -94,12 +93,21 @@ except KeyError as exc:
 
 #Optional config
 COPY_IMAGES_TO = []
+CREATE_COLLAGE = False
+PRINT_TEMPLATE_FOLDER = "base"
+
 try:
     if isinstance(CONFIG["COPY_IMAGES_TO"], list):
         COPY_IMAGES_TO.extend( CONFIG["COPY_IMAGES_TO"] )
     else:
         COPY_IMAGES_TO.append( CONFIG["COPY_IMAGES_TO"] )
-
+    
+    if isinstance(CONFIG["CREATE_COLLAGE"], bool):
+        CREATE_COLLAGE = CONFIG['CREATE_COLLAGE']
+        
+    if isinstance(CONFIG["PRINT_TEMPLATE_FOLDER"], string):
+        PRINT_TEMPLATE_FOLDER = CONFIG["PRINT_TEMPLATE_FOLDER"]
+    
 except KeyError as exc:
     pass
 
@@ -251,8 +259,12 @@ def taking_photo(photo_number, filename_prefix):
 
     #Take still
     CAMERA.annotate_text = ''
+    #flip camera back if hflip is true
+    if CAMERA_HFLIP is True:
+        CAMERA.hflip = False
     CAMERA.capture(filename)
     print('Photo (' + str(photo_number) + ') saved: ' + filename)
+    CAMERA.hflip = CAMERA_HFLIP
     return filename
 
 def playback_screen(filename_prefix, photo_filenames):
@@ -288,10 +300,9 @@ def playback_screen(filename_prefix, photo_filenames):
 
 def create_collage(photo_filenames):
     print('Now make a collage and run external script')
-    external_script = REAL_PATH + "/createCollage.sh " + ' '.join(photo_filenames)
+    external_script = REAL_PATH + "/print_Templates/" + CONFIG["PRINT_TEMPLATE_FOLDER"] + "/createCollage.sh " + ' '.join(photo_filenames)
     print(external_script)
     subprocess.Popen(external_script, shell=True)
-
 
 def main():
     """
