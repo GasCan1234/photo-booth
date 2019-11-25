@@ -359,9 +359,11 @@ def main():
             #After every 10 cycles, alternate the overlay
             i = i+1
             if i == blink_speed:
-                overlay_2.alpha = 255
+                overlay_2.layer = 3
+                overlay_1.layer = 4
             elif i == (2 * blink_speed):
-                overlay_2.alpha = 0
+                overlay_2.layer = 4
+                overlay_1.layer = 3
                 i = 0
 
             #Regardless, restart loop
