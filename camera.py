@@ -249,7 +249,9 @@ def taking_photo(photo_number, filename_prefix):
 
     #countdown from 3, and display countdown on screen
     for counter in range(COUNTDOWN, 0, -1):
-        overlay_image(REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + '/seconds_' + COUNTDOWN + '.png', 1)
+        countdown_file = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + '/seconds_' + str(counter) + '.png'
+        print(countdown_file)
+        overlay_image(countdown_file, 1, mode='RGBA')
 
     #Take still
     CAMERA.annotate_text = ''
