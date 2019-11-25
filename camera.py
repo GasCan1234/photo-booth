@@ -81,6 +81,8 @@ try:
     TESTMODE_AUTOPRESS_BUTTON = CONFIG['TESTMODE_AUTOPRESS_BUTTON']
     SAVE_RAW_IMAGES_FOLDER = CONFIG['SAVE_RAW_IMAGES_FOLDER']
     ASSETS_TEMPLATE_FOLDER = CONFIG['ASSETS_TEMPLATE_FOLDER']
+    CREATE_COLLAGE = CONFIG['CREATE_COLLAGE']
+    PRINT_TEMPLATE_FOLDER = CONFIG['PRINT_TEMPLATE_FOLDER']
 
 except KeyError as exc:
     print('')
@@ -93,21 +95,14 @@ except KeyError as exc:
 
 #Optional config
 COPY_IMAGES_TO = []
-CREATE_COLLAGE = False
-PRINT_TEMPLATE_FOLDER = "base"
+
 
 try:
     if isinstance(CONFIG["COPY_IMAGES_TO"], list):
         COPY_IMAGES_TO.extend( CONFIG["COPY_IMAGES_TO"] )
     else:
         COPY_IMAGES_TO.append( CONFIG["COPY_IMAGES_TO"] )
-    
-    if isinstance(CONFIG["CREATE_COLLAGE"], bool):
-        CREATE_COLLAGE = CONFIG['CREATE_COLLAGE']
-        
-    if isinstance(CONFIG["PRINT_TEMPLATE_FOLDER"], string):
-        PRINT_TEMPLATE_FOLDER = CONFIG["PRINT_TEMPLATE_FOLDER"]
-    
+   
 except KeyError as exc:
     pass
 
@@ -254,8 +249,7 @@ def taking_photo(photo_number, filename_prefix):
 
     #countdown from 3, and display countdown on screen
     for counter in range(COUNTDOWN, 0, -1):
-        print_overlay("             ..." + str(counter))
-        sleep(1)
+        overlay_image(REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + '/seconds_' + COUNTDOWN + '.png', 1)
 
     #Take still
     CAMERA.annotate_text = ''

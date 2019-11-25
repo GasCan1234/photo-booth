@@ -1,7 +1,9 @@
 #!/bin/bash
 
-TEMPLATE_DIR = $PWD
-PYTHON_DIR="$TEMPLATE_DIR/../.."
+TEMPLATE_NAME="base"
+
+PYTHON_DIR=$PWD
+TEMPLATE_DIR="$PYTHON_DIR/print_Templates/$TEMPLATE_NAME"
 TMP_DIR="tmp_convert"
 IMAGE_DIR="photos"
 TIME=`date +%Y-%m-%d_%H-%M-%S`
