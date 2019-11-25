@@ -174,7 +174,7 @@ def remove_overlay(overlay_id):
         CAMERA.remove_overlay(overlay_id)
 
 # overlay one image on screen
-def overlay_image(image_path, duration=0, layer=3, mode='RGB'):
+def overlay_image(image_path, duration=0, layer=3, mode='RGBA'):
     """
     Add an overlay (and sleep for an optional duration).
     If sleep duration is not supplied, then overlay will need to be removed later.
@@ -250,7 +250,7 @@ def taking_photo(photo_number, filename_prefix):
     #countdown from 3, and display countdown on screen
     for counter in range(COUNTDOWN, 0, -1):
         countdown_file = REAL_PATH + '/assets/' + ASSETS_TEMPLATE_FOLDER + '/seconds_' + str(counter) + '.png'
-        overlay_image(countdown_file, 1, mode='RGBA')
+        overlay_image(countdown_file, 1)
 
     #Take still
     CAMERA.annotate_text = ''
